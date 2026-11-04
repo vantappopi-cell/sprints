@@ -3,7 +3,6 @@ const arr = [
     {id:2, catecory:"Chair", name:"Baltsar Chair",price: 299, image:"img/sakarias-armchair-black-sporda-dark-gray__0729767_pe737131_s5_adobespark (1).png", raiting:5, imgCart:'img/sakarias-armchair-black-sporda-dark-gray__0729767_pe737131_s5_adobespark (6).png'},
     {id:3, catecory:"Chair", name:"Anjay Chair",price: 519, image:"img/sakarias-armchair-black-sporda-dark-gray__0729767_pe737131_s5_adobespark (2).png", raiting:5, imgCart:'img/sakarias-armchair-black-sporda-dark-gray__0729767_pe737131_s5_adobespark (5).png'},
     {id:4, catecory:"Chair", name:"Nyantuy Chair",price: 921, image:"img/sakarias-armchair-black-sporda-dark-gray__0729767_pe737131_s5_adobespark (4).png", raiting:5, imgCart:'img/sakarias-armchair-black-sporda-dark-gray__0729767_pe737131_s5_adobespark (5).png'},
-    {id:5, catecory:"Chair", name:"Nyantuy Chair",price: 921, image:"img/sakarias-armchair-black-sporda-dark-gray__0729767_pe737131_s5_adobespark (4).png", raiting:5, imgCart:'img/sakarias-armchair-black-sporda-dark-gray__0729767_pe737131_s5_adobespark (5).png'},
 ]
 
 const job = [
@@ -225,3 +224,137 @@ cartOpne.addEventListener('click',() =>{
 cartClose.addEventListener('click',() =>{
     cartModal.classList.remove('active')
 })
+
+const burgerBtn = document.getElementById('burgerBtn');
+const headerNav = document.querySelector('.header__nav');
+
+if (burgerBtn && headerNav) {
+    burgerBtn.addEventListener('click', () => {
+        burgerBtn.classList.toggle('active');
+        headerNav.classList.toggle('active');
+    });
+
+    headerNav.addEventListener('click', (e) => {
+        if (e.target.classList.contains('header__nav-link')) {
+            burgerBtn.classList.remove('active');
+            headerNav.classList.remove('active');
+        }
+    });
+}
+
+const scrollObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+        }
+    });
+}, {
+    threshold: 0.15
+});
+
+const hiddenElements = document.querySelectorAll('.fade-in-scroll');
+hiddenElements.forEach(el => scrollObserver.observe(el));
+
+categoryButton.forEach(btn => {
+    btn.addEventListener('click', (e) => {
+        categoryButton.forEach(b => b.classList.remove('active'));
+        e.target.classList.add('active');
+
+        const selectedCategory = e.target.textContent.trim();
+        
+        sl.innerHTML = '';
+
+        for(let i = 0; i < arr.length; i++ ){
+            if (arr[i].catecory === selectedCategory) {
+                let raitingChair = `<span><img src="img/Vector.png" alt=""></span>`.repeat(arr[i].raiting);
+                sl.innerHTML += `
+                <div class="card">
+                    <img class="card__img" src="${arr[i].image}" alt="">
+                    <p class="card__category">${arr[i].catecory}</p>
+                    <p class="card__tittle">${arr[i].name}</p>
+                    <div class="raiting">${raitingChair}</div>
+                    <div class="card__bottom">
+                        <p class="card__price">$${arr[i].price}</p>
+                        <button class="card__button" data-id="${arr[i].id}">+</button>
+                    </div>
+                </div>
+                `;
+            }
+        }
+    });
+});
+
+const searchInput = document.querySelector('.search__input');
+const searchForm = document.querySelector('.search');
+
+const autocompleteList = document.createElement('div');
+autocompleteList.className = 'search__autocomplete';
+searchForm.appendChild(autocompleteList);
+
+let activeIndex = -1;
+let currentMatches = [];
+
+searchInput.addEventListener('input', (e) => {
+    const query = e.target.value.trim().toLowerCase();
+    autocompleteList.innerHTML = '';
+    activeIndex = -1;
+
+    if (!query) {
+        autocompleteList.classList.remove('open');
+        return;
+    }
+
+    currentMatches = arr.filter(item => 
+        item.name.toLowerCase().includes(query) || item.catecory.toLowerCase().includes(query)
+    );
+
+    if (currentMatches.length === 0) {
+        autocompleteList.innerHTML = '<div class="autocomplete-no-result">Ничего не найдено</div>';
+    } else {
+        currentMatches.forEach((item, index) => {
+            const div = document.createElement('div');
+            div.className = 'autocomplete-item';
+            div.innerHTML = `<span class="autocomplete-category">${item.catecory}</span> — ${item.name}`;
+            div.addEventListener('click', () => selectItem(item));
+            autocompleteList.appendChild(div);
+        });
+    }
+    autocompleteList.classList.add('open');
+});
+
+function selectItem(item) {
+    searchInput.value = item.name;
+    autocompleteList.classList.remove('open');
+
+    const targetTab = Array.from(categoryButton).find(btn => btn.textContent.trim().toLowerCase() === item.catecory.toLowerCase());
+    if (targetTab) {
+        categoryButton.forEach(b => b.classList.remove('active'));
+        targetTab.classList.add('active');
+        renderProducts(item.catecory);
+        document.getElementById('products')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+}
+
+searchInput.addEventListener('keydown', (e) => {
+    const items = autocompleteList.querySelectorAll('.autocomplete-item');
+    if (!autocompleteList.classList.contains('open') || items.length === 0) return;
+
+    if (e.key === 'ArrowDown') {
+        e.preventDefault();
+        activeIndex = (activeIndex + 1) % items.length;
+        items.forEach((el, idx) => el.classList.toggle('active', idx === activeIndex));
+    } else if (e.key === 'ArrowUp') {
+        e.preventDefault();
+        activeIndex = (activeIndex - 1 + items.length) % items.length;
+        items.forEach((el, idx) => el.classList.toggle('active', idx === activeIndex));
+    } else if (e.key === 'Enter') {
+        e.preventDefault();
+        if (activeIndex >= 0) selectItem(currentMatches[activeIndex]);
+    } else if (e.key === 'Escape') {
+        autocompleteList.classList.remove('open');
+    }
+});
+
+document.addEventListener('click', (e) => {
+    if (!searchForm.contains(e.target)) autocompleteList.classList.remove('open');
+});

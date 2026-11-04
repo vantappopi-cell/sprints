@@ -12,46 +12,53 @@
         <div class="container">
             <div class="header__wrapper">
                 <div class="header__top">
-                    <a href="#" class="header__logo">
-                        <img src="img/Panto.svg" alt="">
-                    </a>
-                <nav class="header__nav">
-                    <a href="#" class="header__nav-link text">About Us</a>
-                    <a href="#" class="header__nav-link text">Best products</a>
-                    <a href="#" class="header__nav-link text">Reviews</a>
-                </nav>
-                <button class="header__cart">
-                    <img src="img/Combined-Shape.png" alt="">
-                    <div class="score">
-                        <p class="score__text">0</p>
-                    </div>
-                </button>
+                    <h1 class="header__logo">
+                        <img src="img/Panto.svg" alt="logo">
+                    </h1>
+                    
+                    <button class="burger-menu" id="burgerBtn">
+                        <span></span>
+                    </button>
+
+                    <nav class="header__nav">
+                        <a href="#about" class="header__nav-link text">About Us</a>
+                        <a href="#products" class="header__nav-link text">Best products</a>
+                        <a href="#reviews" class="header__nav-link text">Reviews</a>
+                    </nav>
+
+                    <button class="header__cart">
+                        <img src="img/Combined-Shape.png" alt="cart">
+                        <span class="score">
+                            <p class="score__text">0</p>
+                        </span>
+                    </button>
                 </div>
                 <div class="header__content">
-                    <h1 class="header__content-tittle">Make your interior more minimalistic & modern</h1>
+                    <h2 class="header__content-tittle">Make your interior more minimalistic & modern</h2>
                     <p class="header__content-text">Turn your room with panto into a lot more minimalist and modern with ease and speed</p>
                     <form class="search">
                         <input type="text" placeholder="Search furniture" class="search__input">
                         <button class="search__button">
-                            <img src="img/akar-icons_search.svg" alt="">
+                            <img src="img/akar-icons_search.svg" alt="lupa">
                         </button>
                     </form>
                 </div>
             </div>
         </div>
     </header>
+
     <main>
-        <section class="choosing">
+        <section class="choosing" id="about">
             <div class="container">
-                <div class="choosing__wrapper">
-                    <h1 class="choosing__tittle tittle">Why Choosing Us</h1>
+                <div class="choosing__wrapper fade-in-scroll">
+                    <h2 class="choosing__tittle tittle">Why Choosing Us</h2>
                     <div class="block__wrapper">
                         <div class="block">
                             <h3 class="block__tittle">Luxury facilities</h3>
                             <p class="block__text">The advantage of hiring a workspace with us is that givees you comfortable service and all-around facilities.</p>
                             <a href="#" class="block__link">
                                 More Info
-                                <img src="img/Vector.svg" alt="">
+                                <img src="img/Vector.svg" alt="arrow">
                             </a>
                         </div>
                         <div class="block">
@@ -59,7 +66,7 @@
                             <p class="block__text">You can get a workspace of the highst quality at an affordable price and still enjoy the facilities that are oly here.</p>
                             <a href="#" class="block__link">
                                 More Info
-                                <img src="img/Vector.svg" alt="">
+                                <img src="img/Vector.svg" alt="arrow">
                             </a>
                         </div>
                         <div class="block">
@@ -67,81 +74,84 @@
                             <p class="block__text">We provide many unique work space choices so that you can choose the workspace to your liking.</p>
                             <a href="#" class="block__link">
                                 More Info
-                                <img src="img/Vector.svg" alt="">
+                                <img src="img/Vector.svg" alt="arrow">
                             </a>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
- <section class="product">
-    <div class="container">
-        <div class="product__wrapper">
-            <h1 class="card__tittle tittle">Best Selling Product</h1>
-            <div class="tabs">
-                <button class="tab-btn active">Chair</button>
-                <button class="tab-btn">Beds</button>
-                <button class="tab-btn">Sofa</button>
-                <button class="tab-btn">Lamp</button>
-            </div>
-        </div>
-        <div class="slider__container">
-            <button class="nav-arrow" id="prevBtn"><img src="img/grommet-icons_form-next-link.svg" alt=""></button>
-            <div class="slider-window">
-                <div class="sleder__wrapper"></div>
-            </div>
-            <button class="nav-arrow" id="nextBtn"><img src="img/grommet-icons_form-next-link (5).png" alt=""></button>
-        </div>
-        <a href="#" class="blocktw">
-            More Info
-            <img src="img/Vector.svg" alt="">
-        </a>
-    </div>
-</section>
-<section class="testimonals">
-    <div class="container">
-        <div class="testmonals__wrapper">
-            <div class="nach">
-                <h3 class="testimonals__subtittle">Testimonials</h3>
-                <h1 class="testimonals__tittle tittle">Our Client Reviews</h1>
-            </div>
-            <div class="testimonals__slider__container">
-                <button class="nav-arrow" id="nexxt__btn"><img src="img/grommet-icons_form-next-link.svg" alt=""></button>
-                <div class="testimonals__slider-window">
-                    <div class="testmob__slider-wrapper"></div>
+
+        <section class="product" id="products">
+            <div class="container fade-in-scroll">
+                <div class="product__wrapper">
+                    <h2 class="card__tittle tittle">Best Selling Product</h2>
+                    <div class="tabs">
+                        <button class="tab-btn active">Chair</button>
+                        <button class="tab-btn">Beds</button>
+                        <button class="tab-btn">Sofa</button>
+                        <button class="tab-btn">Lamp</button>
+                    </div>
                 </div>
-                <button class="nav-arrow" id="pers__btn"><img src="img/grommet-icons_form-next-link (5).png" alt=""></button>
+                <div class="slider__container">
+                    <button class="nav-arrow" id="prevBtn"><img src="img/grommet-icons_form-next-link.svg" alt="nav-arrow"></button>
+                    <div class="slider-window">
+                        <div class="sleder__wrapper"></div>
+                    </div>
+                    <button class="nav-arrow" id="nextBtn"><img src="img/grommet-icons_form-next-link (5).png" alt="nav-arrow"></button>
+                </div>
+                <a href="#" class="blocktw">
+                    More Info
+                    <img src="img/Vector.svg" alt="arrow">
+                </a>
             </div>
-        </div>
-    </div>
-</section>
+        </section>
+
+        <section class="testimonals" id="reviews">
+            <div class="container">
+                <div class="testmonals__wrapper fade-in-scroll">
+                    <div class="nach">
+                        <h3 class="testimonals__subtittle">Testimonials</h3>
+                        <h2 class="testimonals__tittle tittle">Our Client Reviews</h2>
+                    </div>
+                    <div class="testimonals__slider__container">
+                        <button class="nav-arrow" id="nexxt__btn"><img src="img/grommet-icons_form-next-link.svg" alt="nav-arrow"></button>
+                        <div class="testimonals__slider-window">
+                            <div class="testmob__slider-wrapper"></div>
+                        </div>
+                        <button class="nav-arrow" id="pers__btn"><img src="img/grommet-icons_form-next-link (5).png" alt="nav-arrow"></button>
+                    </div>
+                </div>
+            </div>
+        </section>
     </main>
+
     <footer class="footer">
         <div class="container">
             <div class="footer__top">
                 <div class="footer__top-info">
-                    <h1 class="footer__top-logo">Panto</h1>
+                    <h2 class="footer__top-logo">Panto</h2>
                     <p class="footer__top-descroption">he advantage of hiring a workspace with us is that givees you comfortable service and all-around facilities.</p>
                 </div>
                 <div class="footer__top-contact">
-                    <ul class="footer__top-list">
-                        <li class="footer__top-tittle">Services</li>
-                        <li class="footer__top-item">Email Marketing</li>
-                        <li class="footer__top-item">Campaigns</li>
-                        <li class="footer__top-item">Branding</li>
-                    </ul>
-                    <ul class="footer__top-list">
-                        <li class="footer__top-tittle">Furniture</li>
-                        <li class="footer__top-item">Beds</li>
-                        <li class="footer__top-item">All</li>
-                        <li class="footer__top-item">Our Story</li>
-                    </ul>
-                    <ul class="footer__top-list">
-                        <li class="footer__top-tittle">Follow Us</li>
-                        <li class="footer__top-item"> <img src="img/001-facebook.png" alt=""> Facebook</li>
-                        <li class="footer__top-item"> <img src="img/003-twitter.png" alt=""> Twitter</li>
-                        <li class="footer__top-item"> <img src="img/004-instagram.png" alt=""> Instagram</li>
-                    </ul>
+                    <nav class="footer__top-list">
+                        <a  href="#" class="footer__top-tittle">Services</a>
+                        <a  href="#" class="footer__top-item">Email Marketing</a>
+                        <a  href="#" class="footer__top-item">Campaigns</a>
+                        <a  href="#" class="footer__top-item">Branding</a>
+                    </nav>
+                    <nav class="footer__top-list">
+                        <a  href="#" class="footer__top-tittle">Furniture</a>
+                        <a  href="#" class="footer__top-item">Beds</a>
+                        <a  href="#" class="footer__top-item">All</a>
+                        <a  href="#" class="footer__top-item">Our Story</a>
+                    </nav>
+                    <nav class="footer__top-list">
+                        <a  href="#" class="footer__top-tittle">Follow Us</li>
+                        <a  href="#" class="footer__top-item"> <img src="img/001-facebook.png" alt="social-icon"> Facebook</a>
+                        <a  href="#" class="footer__top-item"> <img src="img/003-twitter.png" alt="social-icon"> Twitter</a>
+                        <a  href="#" class="footer__top-item"> <img src="img/004-instagram.png" alt="social-icon"> Instagram</a>
+                    </nav>
                 </div>
             </div>
             <div class="footer__bottom">
@@ -153,6 +163,7 @@
             </div>
         </div>
     </footer>
+
     <div class="cart__modal">
         <div class="cart__wrapper">
             <div class="cart__top">
@@ -161,29 +172,30 @@
                     <p class="catr__text-score"> <span class="score__item">0 </span> товаров</p>
                 </div>
                 <button class="cart__close-btn">
-                    <img src="img/Group 48095482.png" alt="">
+                    <img src="img/Group 48095482.png" alt="catr">
                 </button>
             </div>
 
-            <div class="card__item">
-            </div>
+            <div class="card__item"></div>
 
             <div class="card_bottom">
                 <div class="card_bottom-sum">
-                    <p>Сумма товаров</p> <span class="card_bottom-pricee">0</span>
+                    <span>Сумма</span>
+                    <span class="card_bottom-pricee">$0</span>
                 </div>
                 <div class="dostavka">
-                    <p>Доставка</p>
-                    <span class="card_bottom-dost">Бесплатно</span>
+                    <span>Доставка</span>
+                    <span class="card_bottom-dost">$15</span>
                 </div>
                 <div class="itog">
-                    <p class="card_bottom-text">Итого</p>
-                    <span class="card_bottom-itog">0</span>
+                    <span>Итого</span>
+                    <span class="card_bottom-itog">$0</span>
                 </div>
-                <button class="card_bottom-button">Оформить заказ →</button>
+                <button class="card_bottom-button">Оформить заказ</button>
             </div>
         </div>
     </div>
+    
     <script src="script.js"></script>
 </body>
 </html>
